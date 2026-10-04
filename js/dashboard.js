@@ -1,0 +1,2 @@
+/* Dashboard JS */
+'use strict';

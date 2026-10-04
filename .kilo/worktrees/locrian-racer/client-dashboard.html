@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Dashboard — Serenova | Your Wellness Portal</title>
+  <meta name="description" content="Manage your Serenova bookings, view session history, track payments, and update your wellness preferences from your personal dashboard.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' fill='none' stroke='%23C9A96E'><circle cx='20' cy='20' r='18' stroke-width='1.5'/><path d='M20 7C20 12.5 17 18 20 26C23 18 20 12.5 20 7Z' stroke-width='1.5'/><path d='M20 14.5C16.5 16 13 19 14.8 24.5C16.8 23.2 18.5 24.5 20 26' stroke-width='1.3'/><path d='M20 14.5C23.5 16 27 19 25.2 24.5C23.2 23.2 21.5 24.5 20 26' stroke-width='1.3'/><path d='M15 29C18 30.5 22 30.5 25 29' stroke-width='1.2'/><circle cx='20' cy='5' r='1' fill='%23C9A96E'/></svg>">
+</head>
+<body>
+
+<div class="dashboard-page" id="client-dashboard">
+
+  <!-- ============================================================
+       SIDEBAR
+       ============================================================ -->
+  <aside class="dashboard-sidebar" id="dashboard-sidebar" aria-label="Dashboard navigation">
+    <div class="sidebar-logo">
+      <a href="index.html" class="sidebar-logo-icon" aria-label="Serenova Home"><svg class="brand-logo-mark" viewBox="0 0 40 40" width="28" height="28" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.55"/><circle cx="20" cy="20" r="15.5" stroke="currentColor" stroke-width="0.75" stroke-dasharray="2 2" stroke-opacity="0.35"/><path d="M20 7C20 12.5 17 18 20 26C23 18 20 12.5 20 7Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 10V22" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-opacity="0.7"/><path d="M20 14.5C16.5 16 13 19 14.8 24.5C16.8 23.2 18.5 24.5 20 26" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 14.5C23.5 16 27 19 25.2 24.5C23.2 23.2 21.5 24.5 20 26" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 19C15.5 19.5 10.5 22 11.5 26.5C14.5 25.8 17.5 26 20 26" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 19C24.5 19.5 29.5 22 28.5 26.5C25.5 25.8 22.5 26 20 26" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 29C18 30.5 22 30.5 25 29" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-opacity="0.8"/><circle cx="20" cy="4.8" r="0.9" fill="currentColor"/></svg></a>
+      <div>
+        <div class="sidebar-logo-name">Serenova</div>
+        <div class="sidebar-logo-sub">Client Portal</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav" role="navigation" aria-label="Dashboard menu">
+      <div class="sidebar-section-label">Main</div>
+      <a href="#overview" class="sidebar-link active" data-section="overview">
+        <span class="sidebar-link-icon"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+        <span>Dashboard</span>
+      </a>
+      <a href="#upcoming" class="sidebar-link" data-section="upcoming">
+        <span class="sidebar-link-icon"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg></span>
+        <span>Upcoming Bookings</span>
+        <span class="sidebar-link-badge">2</span>
+      </a>
+      <a href="#book" class="sidebar-link" data-section="book">
+        <span class="sidebar-link-icon"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
+        <span>Book a Session</span>
+      </a>
+
+      <div class="sidebar-section-label">My Wellness</div>
+      <a href="#history" class="sidebar-link" data-section="history">
+        <span class="sidebar-link-icon"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></span>
+        <span>Session History</span>
+      </a>
+      <a href="#therapists" class="sidebar-link" data-section="therapists">
+        <span class="sidebar-link-icon"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="20" height="20"><path d="M12 21a9 9 0 0 0 9-9c0-4-4.5-8-9-11-4.5 3-9 7-9 11a9 9 0 0 0 9 9Z"/><path d="M12 3v18"/><path d="M12 14c-2.5 0-4-1.5-4-3.5 0-2 2-3.5 4-4.5 2 1 4 2.5 4 4.5 0 2-1.5 3.5-4 3.5Z"/></svg></span>
+        <span>My Therapists</span>
+      </a>
+      <a href="#wellness" class="sidebar-link" data-section="wellness">
+        <span class="sidebar-link-icon"><svg class="icon icon-leaf" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span>
+        <span>Wellness Tracker</span>
+      </a>
+
+      <div class="sidebar-section-label">Account</div>
+      <a href="#payments" class="sidebar-link" data-section="payments">
+        <span class="sidebar-link-icon"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg></span>
+        <span>Payments & Invoices</span>
+      </a>
+      <a href="#notifications" class="sidebar-link" data-section="notifications">
+        <span class="sidebar-link-icon"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></span>
+        <span>Notifications</span>
+        <span class="sidebar-link-badge" style="background:var(--gold);color:var(--teal-deep);">3</span>
+      </a>
+      <a href="#profile" class="sidebar-link" data-section="profile">
+        <span class="sidebar-link-icon"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+        <span>Profile & Preferences</span>
+      </a>
+
+      <div class="sidebar-section-label">More</div>
+      <a href="pricing.html" class="sidebar-link">
+        <span class="sidebar-link-icon"><svg class="icon star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+        <span>Upgrade Membership</span>
+      </a>
+      <a href="blog.html" class="sidebar-link">
+        <span class="sidebar-link-icon"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 2v20"/></svg></span>
+        <span>Wellness Blog</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&q=80&auto=format" alt="Sarah Thompson" class="sidebar-user-avatar" loading="lazy">
+        <div>
+          <div class="sidebar-user-name">Sarah Thompson</div>
+          <div class="sidebar-user-role">Serenity Member</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:0.5rem;margin-top:0.875rem;">
+        <button data-theme-toggle style="flex:1;padding:0.5rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-sm);color:rgba(255,255,255,0.6);font-size:0.75rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.4rem;">
+          <span data-theme-icon><svg class="icon icon-stroke" viewBox="0 0 24 24" width="16" height="16"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
+        </button>
+        <a href="login.html" style="flex:1;padding:0.5rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-sm);color:rgba(255,255,255,0.6);font-size:0.75rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.4rem;text-decoration:none;">
+          <svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg> Logout
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Mobile Overlay -->
+  <div class="mobile-nav-overlay" id="sidebar-overlay"></div>
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <main class="dashboard-main" role="main">
+
+    <!-- Top Bar -->
+    <header class="dashboard-topbar" role="banner">
+      <div class="topbar-left">
+        <button class="sidebar-mobile-toggle" id="sidebar-mobile-toggle" aria-label="Toggle sidebar"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="20" height="20"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg></button>
+        <div>
+          <div class="dashboard-page-title">Good evening, Sarah</div>
+          <div style="font-size:0.75rem;color:var(--text-muted);">Friday, Oct 2, 2026 · San Francisco, CA</div>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <div class="topbar-search">
+          <span class="topbar-search-icon"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+          <input type="search" class="topbar-search-input" placeholder="Search bookings..." aria-label="Search">
+        </div>
+        <div style="position:relative;">
+          <button class="topbar-icon-btn" style="position:relative;"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><span class="badge-dot"></span></button>
+          <div class="notifications-panel" id="notif-panel" aria-live="polite">
+            <div class="notif-header">
+              <span class="notif-title">Notifications</span>
+              <span class="notif-mark-all" tabindex="0">Mark all read</span>
+            </div>
+            <div class="notif-list">
+              <div class="notif-item unread">
+                <div class="notif-icon-wrap" style="background:rgba(18,59,58,0.08);"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg></div>
+                <div class="notif-info">
+                  <div class="notif-text">Your <strong>Swedish Massage</strong> with Priya Nair is confirmed for tomorrow at 10:00 AM</div>
+                  <div class="notif-time">2 hours ago</div>
+                </div>
+                <div class="notif-dot"></div>
+              </div>
+              <div class="notif-item unread">
+                <div class="notif-icon-wrap" style="background:var(--gold-pale);"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg></div>
+                <div class="notif-info">
+                  <div class="notif-text">Payment of <strong>$120</strong> was successfully processed for your last session</div>
+                  <div class="notif-time">Yesterday</div>
+                </div>
+                <div class="notif-dot"></div>
+              </div>
+              <div class="notif-item unread">
+                <div class="notif-icon-wrap" style="background:var(--rose-pale);"><svg class="icon star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                <div class="notif-info">
+                  <div class="notif-text">Rate your session with Marcus Webb — how was your experience?</div>
+                  <div class="notif-time">2 days ago</div>
+                </div>
+                <div class="notif-dot"></div>
+              </div>
+              <div class="notif-item">
+                <div class="notif-icon-wrap" style="background:var(--sage-pale);"><svg class="icon icon-leaf" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div>
+                <div class="notif-info">
+                  <div class="notif-text">New: Aromatherapy CBD Oil sessions now available in your area!</div>
+                  <div class="notif-time">3 days ago</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="topbar-icon-btn" data-theme-toggle aria-label="Toggle theme"><span data-theme-icon><svg class="icon icon-stroke" viewBox="0 0 24 24" width="16" height="16"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span></button>
+        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&q=80&auto=format" alt="Sarah Thompson" class="topbar-avatar" loading="lazy">
+      </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-content">
+
+      <!-- ============================================================
+           OVERVIEW CARDS
+           ============================================================ -->
+      <div class="overview-cards">
+        <div class="overview-card">
+          <div class="overview-card-icon oc-teal"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="20" height="20"><path d="M12 21a9 9 0 0 0 9-9c0-4-4.5-8-9-11-4.5 3-9 7-9 11a9 9 0 0 0 9 9Z"/><path d="M12 3v18"/><path d="M12 14c-2.5 0-4-1.5-4-3.5 0-2 2-3.5 4-4.5 2 1 4 2.5 4 4.5 0 2-1.5 3.5-4 3.5Z"/></svg></div>
+          <div class="overview-card-info">
+            <div class="overview-card-value" data-count="24" data-suffix="">0</div>
+            <div class="overview-card-label">Total Sessions</div>
+            <div class="overview-card-change change-up">↑ 3 this month</div>
+          </div>
+        </div>
+        <div class="overview-card">
+          <div class="overview-card-icon oc-gold"><svg class="icon star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <div class="overview-card-info">
+            <div class="overview-card-value">4.9</div>
+            <div class="overview-card-label">Avg. Therapist Rating</div>
+            <div class="overview-card-change change-up">↑ Your avg given</div>
+          </div>
+        </div>
+        <div class="overview-card">
+          <div class="overview-card-icon oc-rose"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="9"/><path d="M14.8 9A2 2 0 0 0 13 8h-2a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-2a2 2 0 0 1-1.8-1"/><path d="M12 6v2m0 8v2"/></svg></div>
+          <div class="overview-card-info">
+            <div class="overview-card-value">$2,460</div>
+            <div class="overview-card-label">Total Invested in Wellness</div>
+            <div class="overview-card-change" style="color:var(--text-muted);">Since joining 2024</div>
+          </div>
+        </div>
+        <div class="overview-card">
+          <div class="overview-card-icon oc-sage"><svg class="icon icon-leaf" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div>
+          <div class="overview-card-info">
+            <div class="overview-card-value">2</div>
+            <div class="overview-card-label">Upcoming Sessions</div>
+            <div class="overview-card-change change-up">↑ Next: Tomorrow</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           UPCOMING SESSION (Featured)
+           ============================================================ -->
+      <div class="upcoming-session-card">
+        <div class="upcoming-label">Next Session</div>
+        <div class="upcoming-session-layout">
+          <div class="upcoming-session-info">
+            <h2 class="upcoming-service">Swedish Massage · 90 min</h2>
+            <div class="upcoming-meta">
+              <div class="upcoming-meta-item"><span class="upcoming-meta-icon"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg></span>Saturday, Oct 3, 2026</div>
+              <div class="upcoming-meta-item"><span class="upcoming-meta-icon"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>10:00 AM – 11:30 AM</div>
+              <div class="upcoming-meta-item"><span class="upcoming-meta-icon"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>Your Home · 142 Oak Street, SF</div>
+              <div class="upcoming-meta-item"><span class="upcoming-meta-icon"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="20" height="20"><path d="M12 21a9 9 0 0 0 9-9c0-4-4.5-8-9-11-4.5 3-9 7-9 11a9 9 0 0 0 9 9Z"/><path d="M12 3v18"/><path d="M12 14c-2.5 0-4-1.5-4-3.5 0-2 2-3.5 4-4.5 2 1 4 2.5 4 4.5 0 2-1.5 3.5-4 3.5Z"/></svg></span>Medium Pressure</div>
+            </div>
+            <div class="upcoming-therapist">
+              <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=80&q=80&auto=format" alt="Priya Nair" class="upcoming-therapist-img" loading="lazy">
+              <div>
+                <div class="upcoming-therapist-name">Priya Nair, LMT</div>
+                <div class="upcoming-therapist-role">Senior Therapist · <svg class="icon star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 4.98 (247 reviews)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="upcoming-session-actions">
+            <div class="upcoming-countdown">
+              <div class="countdown-small" id="session-countdown">14:32:07</div>
+              <div class="countdown-small-label">Hours until session</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0.625rem;">
+              <button class="btn btn-gold btn-sm" onclick="window.Serenova.Toast.show({title: 'Message sent',message:'Priya has been notified.',type:'success'})">
+                <svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> Message Therapist
+              </button>
+              <button class="btn btn-outline-light btn-sm" onclick="showRescheduleModal()">
+                <svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 21h5v-5"/></svg> Reschedule
+              </button>
+              <button class="btn btn-sm" style="background:rgba(201,143,143,0.2);color:var(--rose-light);border:1px solid rgba(201,143,143,0.3);" onclick="showCancelModal()">
+                <svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg> Cancel Session
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           QUICK REBOOK
+           ============================================================ -->
+      <div class="quick-rebook-card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+          <div class="quick-rebook-title"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 21h5v-5"/></svg> Quick Rebook</div>
+          <a href="index.html#booking" class="dashboard-section-action">New Booking →</a>
+        </div>
+        <div class="quick-rebook-options">
+          <div class="quick-rebook-opt selected">
+            <div class="qro-icon"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="22" height="22"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg></div>
+            <div class="qro-name">Swedish</div>
+            <div class="qro-price">from $85</div>
+          </div>
+          <div class="quick-rebook-opt">
+            <div class="qro-icon"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="22" height="22"><path d="M18 10a4 4 0 0 0-4-4 4 4 0 0 0-4 4v2a2 2 0 0 1-2 2h-1a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h9a4 4 0 0 0 4-4v-4z"/><circle cx="15" cy="6" r="2"/></svg></div>
+            <div class="qro-name">Deep Tissue</div>
+            <div class="qro-price">from $95</div>
+          </div>
+          <div class="quick-rebook-opt">
+            <div class="qro-icon"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="22" height="22"><path d="M12 7.5a4.5 4.5 0 1 1 4.5 4.5M12 7.5A4.5 4.5 0 1 0 7.5 12M12 7.5V9m4.5 3a4.5 4.5 0 1 1-4.5 4.5M16.5 12H15m-3 4.5a4.5 4.5 0 1 1-4.5-4.5M12 16.5V15m-4.5-3H9"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <div class="qro-name">Aromatherapy</div>
+            <div class="qro-price">from $110</div>
+          </div>
+          <div class="quick-rebook-opt">
+            <div class="qro-icon"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="22" height="22"><circle cx="17" cy="4" r="2"/><path d="m15 8-3.5 4.5L14 17l-3 4"/><path d="m7 13 4-2 3-5"/><path d="M5 21l3-5-2-4"/></svg></div>
+            <div class="qro-name">Sports</div>
+            <div class="qro-price">from $100</div>
+          </div>
+          <div class="quick-rebook-opt">
+            <div class="qro-icon"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="22" height="22"><circle cx="8" cy="7" r="2.5"/><circle cx="16" cy="7" r="2.5"/><path d="M3 21v-3a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v3"/><path d="M15 14h2a4 4 0 0 1 4 4v3"/></svg></div>
+            <div class="qro-name">Couples</div>
+            <div class="qro-price">from $175</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;margin-top:1.25rem;">
+          <div class="form-group" style="flex:1;margin-bottom:0;">
+            <input type="date" class="form-control" id="rebook-date" style="font-size:0.875rem;">
+          </div>
+          <div class="form-group" style="flex:1;margin-bottom:0;">
+            <select class="form-control" id="rebook-time" style="font-size:0.875rem;">
+              <option>Choose time...</option>
+              <option>9:00 AM</option>
+              <option>11:00 AM</option>
+              <option>2:00 PM</option>
+              <option>5:00 PM</option>
+              <option>7:00 PM</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" onclick="window.Serenova.Toast.show({title: 'Booking initiated!',message:'Redirecting to full booking form...',type:'success',duration:2500});" style="flex-shrink:0;">
+            Book Now →
+          </button>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           TWO COLUMNS: Upcoming Bookings + Session History
+           ============================================================ -->
+      <div class="dashboard-grid-2">
+        <!-- Upcoming Bookings -->
+        <div class="dashboard-section">
+          <div class="dashboard-section-header">
+            <span class="dashboard-section-title"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg> Upcoming Bookings</span>
+            <a href="index.html#booking" class="dashboard-section-action">+ Book Session</a>
+          </div>
+          <div class="dashboard-section-body">
+            <div class="booking-list">
+              <div class="booking-list-item">
+                <div class="booking-date-badge">
+                  <div class="booking-date-day">03</div>
+                  <div class="booking-date-month">Oct</div>
+                </div>
+                <div class="booking-list-info">
+                  <div class="booking-service-name">Swedish Massage · 90 min</div>
+                  <div class="booking-meta-small">10:00 AM · Priya Nair · Home</div>
+                </div>
+                <span class="booking-status status-confirmed">Confirmed</span>
+              </div>
+              <div class="booking-list-item">
+                <div class="booking-date-badge" style="background:var(--gold);">
+                  <div class="booking-date-day">10</div>
+                  <div class="booking-date-month">Oct</div>
+                </div>
+                <div class="booking-list-info">
+                  <div class="booking-service-name">Aromatherapy · 75 min</div>
+                  <div class="booking-meta-small">3:00 PM · Sofia Chen · Home</div>
+                </div>
+                <span class="booking-status status-pending">Pending</span>
+              </div>
+            </div>
+            <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);text-align:center;">
+              <a href="index.html#booking" class="btn btn-outline btn-sm" style="width:100%;justify-content:center;">Schedule Another Session</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Session History -->
+        <div class="dashboard-section">
+          <div class="dashboard-section-header">
+            <span class="dashboard-section-title"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg> Recent Sessions</span>
+            <a href="#" class="dashboard-section-action">View All</a>
+          </div>
+          <div class="dashboard-section-body">
+            <div class="history-list">
+              <div class="history-item">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80&auto=format" alt="Marcus Webb" class="history-item-img" loading="lazy">
+                <div class="history-item-info">
+                  <div class="history-service">Deep Tissue · 90 min</div>
+                  <div class="history-therapist">Marcus Webb · <svg class="icon star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                  <div class="history-date">Sep 25, 2026</div>
+                </div>
+                <div class="history-amount">$135</div>
+              </div>
+              <div class="history-item">
+                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=80&q=80&auto=format" alt="Priya Nair" class="history-item-img" loading="lazy">
+                <div class="history-item-info">
+                  <div class="history-service">Swedish Massage · 60 min</div>
+                  <div class="history-therapist">Priya Nair · <svg class="icon star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                  <div class="history-date">Sep 15, 2026</div>
+                </div>
+                <div class="history-amount">$85</div>
+              </div>
+              <div class="history-item">
+                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&q=80&auto=format" alt="Amara Johnson" class="history-item-img" loading="lazy">
+                <div class="history-item-info">
+                  <div class="history-service">Aromatherapy · 90 min</div>
+                  <div class="history-therapist">Amara Johnson · <svg class="icon star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                  <div class="history-date">Sep 5, 2026</div>
+                </div>
+                <div class="history-amount">$140</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           THREE COLUMNS: Wellness + Payments + Favourite Therapists
+           ============================================================ -->
+      <div class="dashboard-grid-2" style="grid-template-columns:1.2fr 1fr;">
+        <!-- Wellness Chart -->
+        <div class="dashboard-section">
+          <div class="dashboard-section-header">
+            <span class="dashboard-section-title"><svg class="icon icon-leaf" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg> Wellness Activity (Last 6 Months)</span>
+          </div>
+          <div class="dashboard-section-body">
+            <div class="wellness-chart" id="wellness-chart">
+              <div class="wellness-bar-wrap"><div class="wellness-bar-col"><div class="wellness-bar" style="height:40%;background:linear-gradient(180deg,var(--teal-light),var(--sage));"></div></div><div class="wellness-bar-label">May</div></div>
+              <div class="wellness-bar-wrap"><div class="wellness-bar-col"><div class="wellness-bar" style="height:60%;"></div></div><div class="wellness-bar-label">Jun</div></div>
+              <div class="wellness-bar-wrap"><div class="wellness-bar-col"><div class="wellness-bar" style="height:50%;"></div></div><div class="wellness-bar-label">Jul</div></div>
+              <div class="wellness-bar-wrap"><div class="wellness-bar-col"><div class="wellness-bar" style="height:80%;"></div></div><div class="wellness-bar-label">Aug</div></div>
+              <div class="wellness-bar-wrap"><div class="wellness-bar-col"><div class="wellness-bar" style="height:70%;"></div></div><div class="wellness-bar-label">Sep</div></div>
+              <div class="wellness-bar-wrap"><div class="wellness-bar-col"><div class="wellness-bar" style="height:90%;background:linear-gradient(180deg,var(--gold),var(--gold-light));"></div></div><div class="wellness-bar-label">Oct</div></div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border);">
+              <div style="text-align:center;"><div style="font-family:var(--font-serif);font-size:1.5rem;color:var(--teal-deep);">24</div><div style="font-size:0.7rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Sessions</div></div>
+              <div style="text-align:center;"><div style="font-family:var(--font-serif);font-size:1.5rem;color:var(--gold);">36hr</div><div style="font-size:0.7rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Total Time</div></div>
+              <div style="text-align:center;"><div style="font-family:var(--font-serif);font-size:1.5rem;color:var(--rose);">5 <svg class="icon star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div style="font-size:0.7rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Avg Rating</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payments -->
+        <div class="dashboard-section">
+          <div class="dashboard-section-header">
+            <span class="dashboard-section-title"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg> Recent Payments</span>
+            <a href="#" class="dashboard-section-action">All Invoices →</a>
+          </div>
+          <div class="dashboard-section-body">
+            <div class="payment-list">
+              <div class="payment-item">
+                <div class="payment-icon"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="20" height="20"><path d="M12 21a9 9 0 0 0 9-9c0-4-4.5-8-9-11-4.5 3-9 7-9 11a9 9 0 0 0 9 9Z"/><path d="M12 3v18"/><path d="M12 14c-2.5 0-4-1.5-4-3.5 0-2 2-3.5 4-4.5 2 1 4 2.5 4 4.5 0 2-1.5 3.5-4 3.5Z"/></svg></div>
+                <div class="payment-desc">
+                  <div class="payment-name">Swedish Massage · 90 min</div>
+                  <div class="payment-date">Sep 25, 2026 · Visa ••4242</div>
+                </div>
+                <div class="payment-amount debit">-$135</div>
+              </div>
+              <div class="payment-item">
+                <div class="payment-icon" style="background:rgba(168,195,176,0.2);"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="20" height="20"><polyline points="20 12 20 22 4 22 4 12"/><rect width="20" height="5" x="2" y="7"/><line x1="12" x2="12" y1="22" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div>
+                <div class="payment-desc">
+                  <div class="payment-name">Membership Credit</div>
+                  <div class="payment-date">Sep 1, 2026 · Serenity Plan</div>
+                </div>
+                <div class="payment-amount credit">+$220</div>
+              </div>
+              <div class="payment-item">
+                <div class="payment-icon"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="20" height="20"><path d="M12 21a9 9 0 0 0 9-9c0-4-4.5-8-9-11-4.5 3-9 7-9 11a9 9 0 0 0 9 9Z"/><path d="M12 3v18"/><path d="M12 14c-2.5 0-4-1.5-4-3.5 0-2 2-3.5 4-4.5 2 1 4 2.5 4 4.5 0 2-1.5 3.5-4 3.5Z"/></svg></div>
+                <div class="payment-desc">
+                  <div class="payment-name">Aromatherapy · 75 min</div>
+                  <div class="payment-date">Sep 5, 2026 · Visa ••4242</div>
+                </div>
+                <div class="payment-amount debit">-$140</div>
+              </div>
+            </div>
+            <div style="margin-top:1.25rem;padding:1rem;background:var(--bg-secondary);border-radius:var(--r-lg);">
+              <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--text-mid);">
+                <span>Current Plan</span>
+                <span style="font-weight:700;color:var(--gold);">Serenity</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--text-mid);margin-top:0.5rem;">
+                <span>Next Billing</span>
+                <span style="font-weight:700;">Nov 1, 2026 · $220</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           FAVOURITE THERAPISTS
+           ============================================================ -->
+      <div class="dashboard-section" style="margin-bottom:1.5rem;">
+        <div class="dashboard-section-header">
+          <span class="dashboard-section-title"><svg class="icon" viewBox="0 0 24 24" width="18" height="18" fill="var(--rose)"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg> My Favourite Therapists</span>
+          <a href="therapists.html" class="dashboard-section-action">Browse All →</a>
+        </div>
+        <div class="dashboard-section-body">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;">
+            <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--bg-secondary);border-radius:var(--r-lg);border:1px solid var(--border);transition:all var(--tr-fast);" onmouseover="this.style.borderColor='var(--sage)'" onmouseout="this.style.borderColor='var(--border)'">
+              <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=80&q=80&auto=format" alt="Priya Nair" style="width:52px;height:52px;border-radius:50%;object-fit:cover;flex-shrink:0;" loading="lazy">
+              <div style="flex:1;min-width:0;">
+                <div style="font-weight:700;font-size:0.875rem;color:var(--text-dark);">Priya Nair</div>
+                <div style="font-size:0.72rem;color:var(--teal-light);font-weight:600;">Swedish · Aromatherapy</div>
+                <div style="font-size:0.72rem;color:var(--text-muted);"><svg class="icon star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 4.98 · 8 yrs exp</div>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="window.Serenova.Toast.show({title:'Booking with Priya',message:'Redirecting to booking form...',type:'info',duration:2000});">Book</button>
+            </div>
+            <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--bg-secondary);border-radius:var(--r-lg);border:1px solid var(--border);transition:all var(--tr-fast);" onmouseover="this.style.borderColor='var(--sage)'" onmouseout="this.style.borderColor='var(--border)'">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80&auto=format" alt="Marcus Webb" style="width:52px;height:52px;border-radius:50%;object-fit:cover;flex-shrink:0;" loading="lazy">
+              <div style="flex:1;min-width:0;">
+                <div style="font-weight:700;font-size:0.875rem;color:var(--text-dark);">Marcus Webb</div>
+                <div style="font-size:0.72rem;color:var(--teal-light);font-weight:600;">Sports · Deep Tissue</div>
+                <div style="font-size:0.72rem;color:var(--text-muted);"><svg class="icon star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 4.95 · 11 yrs exp</div>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="window.Serenova.Toast.show({title:'Booking with Marcus',message:'Redirecting to booking form...',type:'info',duration:2000});">Book</button>
+            </div>
+            <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--bg-secondary);border-radius:var(--r-lg);border:1px solid var(--border);transition:all var(--tr-fast);" onmouseover="this.style.borderColor='var(--sage)'" onmouseout="this.style.borderColor='var(--border)'">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&q=80&auto=format" alt="Amara Johnson" style="width:52px;height:52px;border-radius:50%;object-fit:cover;flex-shrink:0;" loading="lazy">
+              <div style="flex:1;min-width:0;">
+                <div style="font-weight:700;font-size:0.875rem;color:var(--text-dark);">Amara Johnson</div>
+                <div style="font-size:0.72rem;color:var(--teal-light);font-weight:600;">Prenatal · Swedish</div>
+                <div style="font-size:0.72rem;color:var(--text-muted);"><svg class="icon star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 5.0 · 6 yrs exp</div>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="window.Serenova.Toast.show({title:'Booking with Amara',message:'Redirecting to booking form...',type:'info',duration:2000});">Book</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           PROFILE & PREFERENCES
+           ============================================================ -->
+      <div class="dashboard-section">
+        <div class="dashboard-section-header">
+          <span class="dashboard-section-title"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Profile & Preferences</span>
+          <button class="btn btn-gold btn-sm" onclick="window.Serenova.Toast.show({title: 'Profile saved!',message:'Your preferences have been updated.',type:'success'});">Save Changes</button>
+        </div>
+        <div class="dashboard-section-body">
+          <div class="profile-grid">
+            <!-- Avatar section -->
+            <div class="profile-avatar-section">
+              <div class="profile-avatar-wrap">
+                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=160&q=80&auto=format" alt="Sarah Thompson" class="profile-avatar" loading="lazy">
+                <div class="profile-avatar-edit" title="Change photo"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></div>
+              </div>
+              <div class="profile-name">Sarah Thompson</div>
+              <div class="profile-member-since">Member since January 2024</div>
+              <div class="profile-tier"><svg class="icon icon-leaf" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg> Serenity Member</div>
+              <div style="margin-top:1.25rem;display:flex;gap:1rem;">
+                <div style="text-align:center;"><div style="font-family:var(--font-serif);font-size:1.25rem;color:var(--teal-deep);">24</div><div style="font-size:0.65rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Sessions</div></div>
+                <div style="text-align:center;"><div style="font-family:var(--font-serif);font-size:1.25rem;color:var(--gold);">3</div><div style="font-size:0.65rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Fav. Therapists</div></div>
+              </div>
+            </div>
+
+            <!-- Profile form -->
+            <div style="padding:2rem;">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+                <div class="form-group">
+                  <label class="form-label">First Name</label>
+                  <input type="text" class="form-control" value="Sarah">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Last Name</label>
+                  <input type="text" class="form-control" value="Thompson">
+                </div>
+              </div>
+              <div class="form-group" style="margin-bottom:1rem;">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-control" value="sarah.thompson@email.com">
+              </div>
+              <div class="form-group" style="margin-bottom:1rem;">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" value="+1 (415) 555-9876">
+              </div>
+              <div class="form-group" style="margin-bottom:1rem;">
+                <label class="form-label">Default Location</label>
+                <input type="text" class="form-control" value="142 Oak Street, San Francisco, CA 94102">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Pressure Preference</label>
+                <select class="form-control">
+                  <option>Light — Gentle & Relaxing</option>
+                  <option selected>Medium — Balanced</option>
+                  <option>Firm — Deep Tension Relief</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<!-- Reschedule Modal -->
+<div class="modal-overlay" data-modal="reschedule">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 class="modal-title">Reschedule Session</h3>
+      <button class="modal-close" data-modal-close aria-label="Close modal"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <p style="color:var(--text-mid);margin-bottom:1.5rem;">Select a new date and time for your Swedish Massage with Priya Nair.</p>
+      <div class="form-group" style="margin-bottom:1rem;">
+        <label class="form-label">New Date</label>
+        <input type="date" class="form-control">
+      </div>
+      <div class="form-group" style="margin-bottom:2rem;">
+        <label class="form-label">New Time</label>
+        <div class="time-slot-picker">
+          <button type="button" class="time-slot" data-time="09:00" data-available="true">9:00 AM</button>
+          <button type="button" class="time-slot" data-time="11:00" data-available="true">11:00 AM</button>
+          <button type="button" class="time-slot" data-time="14:00" data-available="true">2:00 PM</button>
+          <button type="button" class="time-slot" data-time="16:00" data-available="false">4:00 PM</button>
+          <button type="button" class="time-slot" data-time="18:00" data-available="true">6:00 PM</button>
+          <button type="button" class="time-slot" data-time="19:00" data-available="true">7:00 PM</button>
+        </div>
+      </div>
+      <button class="btn btn-primary w-full" style="justify-content:center;" onclick="window.Serenova.Modal.close('reschedule');window.Serenova.Toast.show({title: 'Rescheduled!',message:'Your session has been moved. Confirmation sent to your email.',type:'success'});">
+        Confirm Reschedule
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Cancel Modal -->
+<div class="modal-overlay" data-modal="cancel-session">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 class="modal-title" style="color:var(--rose);">Cancel Session</h3>
+      <button class="modal-close" data-modal-close aria-label="Close modal"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div style="background:var(--rose-pale);border:1px solid var(--rose-light);border-radius:var(--r-lg);padding:1rem;margin-bottom:1.5rem;">
+        <p style="color:var(--rose);font-size:0.875rem;"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="16" height="16" style="color:#eab308;"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> <strong>Cancellation Policy:</strong> Since your session is less than 2 hours away, a 50% cancellation fee ($60) will be charged.</p>
+      </div>
+      <p style="color:var(--text-mid);margin-bottom:1.5rem;font-size:0.9rem;">Are you sure you want to cancel your <strong>Swedish Massage with Priya Nair</strong> on Saturday, Oct 3 at 10:00 AM?</p>
+      <div class="form-group" style="margin-bottom:2rem;">
+        <label class="form-label">Reason for cancellation</label>
+        <select class="form-control">
+          <option>Schedule conflict</option>
+          <option>Feeling unwell</option>
+          <option>Emergency</option>
+          <option>Need to reschedule</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div style="display:flex;gap:1rem;">
+        <button class="btn btn-outline" style="flex:1;" data-modal-close>Keep Session</button>
+        <button class="btn" style="flex:1;background:var(--rose);color:white;" onclick="window.Serenova.Modal.close('cancel-session');window.Serenova.Toast.show({title:'Session Cancelled',message:'Your session has been cancelled. A refund will be processed in 3-5 days.',type:'info',duration:5000});">
+          Confirm Cancellation
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/dashboard.js"></script>
+<script>
+  // Sidebar mobile toggle
+  const sidebarToggle = document.getElementById('sidebar-mobile-toggle');
+  const sidebar = document.getElementById('dashboard-sidebar');
+  const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+  sidebarToggle?.addEventListener('click', () => {
+    sidebar?.classList.toggle('mobile-open');
+    sidebarOverlay?.classList.toggle('visible');
+  });
+
+  sidebarOverlay?.addEventListener('click', () => {
+    sidebar?.classList.remove('mobile-open');
+    sidebarOverlay?.classList.remove('visible');
+  });
+
+  // Notifications toggle
+  const notifBtn = document.getElementById('notif-btn');
+  const notifPanel = document.getElementById('notif-panel');
+  notifBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    notifPanel?.classList.toggle('open');
+    notifBtn.setAttribute('aria-expanded', notifPanel?.classList.contains('open'));
+  });
+  document.addEventListener('click', () => notifPanel?.classList.remove('open'));
+
+  // Session countdown timer
+  function updateCountdown() {
+    const sessionTime = new Date();
+    sessionTime.setDate(sessionTime.getDate() + 1);
+    sessionTime.setHours(10, 0, 0, 0);
+
+    const now = new Date();
+    const diff = sessionTime - now;
+
+    if (diff > 0) {
+      const h = Math.floor(diff / 3600000).toString().padStart(2, '0');
+      const m = Math.floor((diff % 3600000) / 60000).toString().padStart(2, '0');
+      const s = Math.floor((diff % 60000) / 1000).toString().padStart(2, '0');
+      const el = document.getElementById('session-countdown');
+      if (el) el.textContent = `${h}:${m}:${s}`;
+    }
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  // Reschedule / Cancel modal triggers
+  function showRescheduleModal() { window.Serenova.Modal.open('reschedule'); }
+  function showCancelModal() { window.Serenova.Modal.open('cancel-session'); }
+
+  // Quick rebook selection
+  document.querySelectorAll('.quick-rebook-opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+      document.querySelectorAll('.quick-rebook-opt').forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+    });
+  });
+
+  // Set min date for rebook
+  const rebookDate = document.getElementById('rebook-date');
+  if (rebookDate) rebookDate.min = new Date().toISOString().split('T')[0];
+</script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon — Serenova | New Features Launching Soon</title>
+  <meta name="description" content="Serenova is preparing something extraordinary. New cities, new services, and enhanced features are coming soon. Join the waitlist to be first in line.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' fill='none' stroke='%23C9A96E'><circle cx='20' cy='20' r='18' stroke-width='1.5'/><path d='M20 7C20 12.5 17 18 20 26C23 18 20 12.5 20 7Z' stroke-width='1.5'/><path d='M20 14.5C16.5 16 13 19 14.8 24.5C16.8 23.2 18.5 24.5 20 26' stroke-width='1.3'/><path d='M20 14.5C23.5 16 27 19 25.2 24.5C23.2 23.2 21.5 24.5 20 26' stroke-width='1.3'/><path d='M15 29C18 30.5 22 30.5 25 29' stroke-width='1.2'/><circle cx='20' cy='5' r='1' fill='%23C9A96E'/></svg>">
+  <style>
+    .coming-soon-page {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .cs-image-half {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cs-image-half img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cs-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(18,59,58,0.8), rgba(18,59,58,0.2));
+    }
+
+    .cs-image-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 4rem;
+    }
+
+    .cs-content-half {
+      background: var(--bg-primary);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 4rem;
+    }
+
+    .cs-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--teal-deep);
+      text-decoration: none;
+      margin-bottom: 3rem;
+    }
+
+    .cs-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(90deg, var(--gold-pale), rgba(201,169,110,0.15));
+      border: 1px solid var(--gold);
+      border-radius: var(--r-full);
+      padding: 0.4rem 1rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--teal-deep);
+      margin-bottom: 1.5rem;
+    }
+
+    .cs-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 300;
+      color: var(--text-dark);
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+
+    .cs-desc {
+      font-size: 1rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      max-width: 440px;
+    }
+
+    /* Countdown */
+    .cs-countdown {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .countdown-unit {
+      text-align: center;
+      min-width: 70px;
+    }
+
+    .countdown-value {
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--teal-deep);
+      line-height: 1;
+      display: block;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 0.75rem 1rem;
+      min-width: 80px;
+    }
+
+    .countdown-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    .cs-features {
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .cs-feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      font-size: 0.875rem;
+      color: var(--text-mid);
+    }
+
+    .cs-feature-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--sage-pale);
+      border-radius: var(--r-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .cs-notify-form {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .cs-progress {
+      margin-bottom: 3rem;
+    }
+
+    .cs-progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      margin-bottom: 0.625rem;
+    }
+
+    @media (max-width: 1024px) {
+      .coming-soon-page { grid-template-columns: 1fr; }
+      .cs-image-half { height: 40svh; }
+      .cs-content-half { padding: 3rem 2rem; }
+    }
+
+    @media (max-width: 600px) {
+      .cs-countdown { gap: 1rem; }
+      .countdown-value { font-size: 2rem; min-width: 60px; padding: 0.625rem; }
+      .cs-image-content { padding: 2rem; }
+      .cs-notify-form { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="coming-soon-page">
+  <!-- Image Half -->
+  <div class="cs-image-half">
+    <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=900&q=80&auto=format" alt="Coming soon — new Serenova features" loading="eager">
+    <div class="cs-image-overlay"></div>
+    <div class="cs-image-content">
+      <a href="index.html" style="display:flex;align-items:center;gap:0.75rem;margin-bottom:3rem;text-decoration:none;">
+        <div class="nav-logo-icon"><svg class="brand-logo-mark" viewBox="0 0 40 40" width="28" height="28" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.55"/><circle cx="20" cy="20" r="15.5" stroke="currentColor" stroke-width="0.75" stroke-dasharray="2 2" stroke-opacity="0.35"/><path d="M20 7C20 12.5 17 18 20 26C23 18 20 12.5 20 7Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 10V22" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-opacity="0.7"/><path d="M20 14.5C16.5 16 13 19 14.8 24.5C16.8 23.2 18.5 24.5 20 26" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 14.5C23.5 16 27 19 25.2 24.5C23.2 23.2 21.5 24.5 20 26" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 19C15.5 19.5 10.5 22 11.5 26.5C14.5 25.8 17.5 26 20 26" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 19C24.5 19.5 29.5 22 28.5 26.5C25.5 25.8 22.5 26 20 26" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 29C18 30.5 22 30.5 25 29" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-opacity="0.8"/><circle cx="20" cy="4.8" r="0.9" fill="currentColor"/></svg></div>
+        <span style="font-family:var(--font-serif);font-size:1.75rem;color:var(--white);font-weight:300;">Serenova</span>
+      </a>
+      <blockquote style="font-family:var(--font-serif);font-size:1.6rem;font-weight:300;color:var(--white);line-height:1.5;margin-bottom:1.25rem;">"Good things take time.<br>Great things are <em style="color:var(--gold);">worth the wait.</em>"</blockquote>
+
+      <!-- Teaser features -->
+      <div style="display:flex;flex-direction:column;gap:1rem;margin-top:2rem;">
+        <div style="display:flex;gap:0.875rem;align-items:center;"><span style="color:var(--gold);display:inline-flex;align-items:center;"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="16" height="16" style="color:var(--gold);"><polyline points="20 6 9 17 4 12"/></svg></span><span style="color:rgba(255,255,255,0.75);font-size:0.875rem;">Serenova AI Therapist Matching</span></div>
+        <div style="display:flex;gap:0.875rem;align-items:center;"><span style="color:var(--gold);display:inline-flex;align-items:center;"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="16" height="16" style="color:var(--gold);"><polyline points="20 6 9 17 4 12"/></svg></span><span style="color:rgba(255,255,255,0.75);font-size:0.875rem;">Live Therapist Tracking (15-min ETA)</span></div>
+        <div style="display:flex;gap:0.875rem;align-items:center;"><span style="color:var(--gold);display:inline-flex;align-items:center;"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="16" height="16" style="color:var(--gold);"><polyline points="20 6 9 17 4 12"/></svg></span><span style="color:rgba(255,255,255,0.75);font-size:0.875rem;">Wellness Subscription Box Delivery</span></div>
+        <div style="display:flex;gap:0.875rem;align-items:center;"><span style="color:var(--gold);display:inline-flex;align-items:center;"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="16" height="16" style="color:var(--gold);"><polyline points="20 6 9 17 4 12"/></svg></span><span style="color:rgba(255,255,255,0.75);font-size:0.875rem;">12 New US Cities — 2027 Expansion</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Half -->
+  <div class="cs-content-half">
+    <a href="index.html" class="cs-logo">
+      <div class="nav-logo-icon"><svg class="brand-logo-mark" viewBox="0 0 40 40" width="28" height="28" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.55"/><circle cx="20" cy="20" r="15.5" stroke="currentColor" stroke-width="0.75" stroke-dasharray="2 2" stroke-opacity="0.35"/><path d="M20 7C20 12.5 17 18 20 26C23 18 20 12.5 20 7Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 10V22" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-opacity="0.7"/><path d="M20 14.5C16.5 16 13 19 14.8 24.5C16.8 23.2 18.5 24.5 20 26" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 14.5C23.5 16 27 19 25.2 24.5C23.2 23.2 21.5 24.5 20 26" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 19C15.5 19.5 10.5 22 11.5 26.5C14.5 25.8 17.5 26 20 26" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 19C24.5 19.5 29.5 22 28.5 26.5C25.5 25.8 22.5 26 20 26" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 29C18 30.5 22 30.5 25 29" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-opacity="0.8"/><circle cx="20" cy="4.8" r="0.9" fill="currentColor"/></svg></div>
+      Serenova
+    </a>
+
+    <div class="cs-badge"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg> New Feature Launch</div>
+
+    <h1 class="cs-title">Something <em style="color:var(--teal-light);">Beautiful</em> is Coming</h1>
+    <p class="cs-desc">We're putting the final touches on a major platform upgrade — including AI therapist matching, real-time tracking, and a whole new way to manage your wellness journey.</p>
+
+    <!-- Countdown Timer -->
+    <div class="cs-countdown" id="cs-countdown">
+      <div class="countdown-unit">
+        <span class="countdown-value" id="cs-days">12</span>
+        <div class="countdown-label">Days</div>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-value" id="cs-hours">08</span>
+        <div class="countdown-label">Hours</div>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-value" id="cs-minutes">45</span>
+        <div class="countdown-label">Minutes</div>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-value" id="cs-seconds">22</span>
+        <div class="countdown-label">Seconds</div>
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <div class="cs-progress">
+      <div class="cs-progress-label">
+        <span>Development Progress</span>
+        <span style="color:var(--teal-deep);font-weight:700;">87% Complete</span>
+      </div>
+      <div class="progress-bar" style="height:8px;">
+        <div class="progress-fill" style="width:87%;transition:width 1.5s ease;"></div>
+      </div>
+    </div>
+
+    <!-- Waitlist Form -->
+    <h3 style="font-family:var(--font-sans);font-size:0.875rem;font-weight:700;color:var(--text-dark);margin-bottom:1rem;"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg> Get Notified at Launch</h3>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;">Join <strong style="color:var(--teal-deep);">2,847 early access subscribers</strong> and receive exclusive launch pricing.</p>
+
+    <form id="waitlist-form" class="cs-notify-form" data-validate-form novalidate>
+      <div class="form-group" style="flex:1;margin-bottom:0;">
+        <div class="input-icon-wrap">
+          <span class="input-icon"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+          <input type="email" class="form-control" name="email" placeholder="your@email.com" required data-validate="required email" autocomplete="email">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" style="flex-shrink:0;white-space:nowrap;">Notify Me →</button>
+    </form>
+
+    <p style="font-size:0.72rem;color:var(--text-muted);margin-bottom:3rem;"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="16" height="16"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> No spam. Unsubscribe anytime. Early subscribers get 20% off at launch.</p>
+
+    <!-- Social + Back -->
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <div>
+        <p style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:0.625rem;">Follow Updates</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+          <a href="#" class="footer-social" aria-label="Twitter"><svg class="icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" class="footer-social" aria-label="LinkedIn"><svg class="icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+        <a href="index.html" class="btn btn-outline btn-sm">← Back to Site</a>
+        <button data-theme-toggle style="font-size:0.75rem;color:var(--text-muted);background:var(--bg-card);padding:0.4rem 0.875rem;border-radius:var(--r-full);border:1px solid var(--border);cursor:pointer;transition:all var(--tr-fast);">
+          <span data-theme-icon><svg class="icon icon-stroke" viewBox="0 0 24 24" width="16" height="16"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+  // Countdown
+  const launchDate = new Date();
+  launchDate.setDate(launchDate.getDate() + 12);
+  launchDate.setHours(12, 0, 0, 0);
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = launchDate - now;
+
+    if (diff <= 0) {
+      document.getElementById('cs-countdown').innerHTML = '<p style="color:var(--teal-deep);font-weight:700;font-size:1.25rem;">We\'re Live!</p>';
+      return;
+    }
+
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins = Math.floor((diff % 3600000) / 60000);
+    const secs = Math.floor((diff % 60000) / 1000);
+
+    const pad = n => String(n).padStart(2, '0');
+    const el = (id, val) => { const e = document.getElementById(id); if (e) e.textContent = pad(val); };
+    el('cs-days', days); el('cs-hours', hours); el('cs-minutes', mins); el('cs-seconds', secs);
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  // Waitlist form
+  const waitlistForm = document.getElementById('waitlist-form');
+  if (waitlistForm) {
+    waitlistForm.addEventListener('validsubmit', () => {
+      window.Serenova.Toast.show({ title: 'You\'re on the list!', message: "We'll notify you the moment we launch. Thank you!", type: 'success', duration: 5000 });
+      waitlistForm.reset();
+    });
+  }
+</script>
+</body>
+</html>
