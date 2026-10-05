@@ -289,7 +289,7 @@
             <div class="qro-price">from $175</div>
           </div>
         </div>
-        <div style="display:flex;gap:1rem;margin-top:1.25rem;">
+        <div class="quick-rebook-controls" style="display:flex;gap:1rem;margin-top:1.25rem;flex-wrap:wrap;">
           <div class="form-group" style="flex:1;margin-bottom:0;">
             <input type="date" class="form-control" id="rebook-date" style="font-size:0.875rem;">
           </div>
@@ -408,7 +408,7 @@
               <div class="wellness-bar-wrap"><div class="wellness-bar-col"><div class="wellness-bar" style="height:70%;"></div></div><div class="wellness-bar-label">Sep</div></div>
               <div class="wellness-bar-wrap"><div class="wellness-bar-col"><div class="wellness-bar" style="height:90%;background:linear-gradient(180deg,var(--gold),var(--gold-light));"></div></div><div class="wellness-bar-label">Oct</div></div>
             </div>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border);">
+            <div class="chart-stat-row">
               <div style="text-align:center;"><div style="font-family:var(--font-serif);font-size:1.5rem;color:var(--teal-deep);">24</div><div style="font-size:0.7rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Sessions</div></div>
               <div style="text-align:center;"><div style="font-family:var(--font-serif);font-size:1.5rem;color:var(--gold);">36hr</div><div style="font-size:0.7rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Total Time</div></div>
               <div style="text-align:center;"><div style="font-family:var(--font-serif);font-size:1.5rem;color:var(--rose);">5 <svg class="icon star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div style="font-size:0.7rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Avg Rating</div></div>
@@ -472,7 +472,7 @@
           <a href="therapists.html" class="dashboard-section-action">Browse All →</a>
         </div>
         <div class="dashboard-section-body">
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;">
+          <div class="grid-3-cards">
             <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--bg-secondary);border-radius:var(--r-lg);border:1px solid var(--border);transition:all var(--tr-fast);" onmouseover="this.style.borderColor='var(--sage)'" onmouseout="this.style.borderColor='var(--border)'">
               <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=80&q=80&auto=format" alt="Priya Nair" style="width:52px;height:52px;border-radius:50%;object-fit:cover;flex-shrink:0;" loading="lazy">
               <div style="flex:1;min-width:0;">
@@ -530,8 +530,8 @@
             </div>
 
             <!-- Profile form -->
-            <div style="padding:2rem;">
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div class="profile-form-wrap">
+              <div class="profile-name-fields" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
                 <div class="form-group">
                   <label class="form-label">First Name</label>
                   <input type="text" class="form-control" value="Sarah">
@@ -623,7 +623,7 @@
           <option>Other</option>
         </select>
       </div>
-      <div style="display:flex;gap:1rem;">
+      <div class="modal-btn-row" style="display:flex;gap:1rem;">
         <button class="btn btn-outline" style="flex:1;" data-modal-close>Keep Session</button>
         <button class="btn" style="flex:1;background:var(--rose);color:white;" onclick="window.Serenova.Modal.close('cancel-session');window.Serenova.Toast.show({title:'Session Cancelled',message:'Your session has been cancelled. A refund will be processed in 3-5 days.',type:'info',duration:5000});">
           Confirm Cancellation
