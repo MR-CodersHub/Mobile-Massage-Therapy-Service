@@ -145,6 +145,9 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 body {
@@ -822,6 +825,22 @@ h4, h5, h6 { font-family: var(--font-sans);  font-weight: 600; line-height: 1.3;
   color: var(--teal-deep);
 }
 
+.service-duration {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.service-duration svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  stroke: currentColor;
+}
+
 /* ============================================================
    FORM ELEMENTS
    ============================================================ */
@@ -1356,7 +1375,10 @@ h4, h5, h6 { font-family: var(--font-sans);  font-weight: 600; line-height: 1.3;
   height: 52px;
   border-radius: var(--r-full);
   object-fit: cover;
+  aspect-ratio: 1 / 1;
+  background: var(--sage-pale);
   border: 2px solid var(--border);
+  flex-shrink: 0;
 }
 
 .testimonial-name {
@@ -1802,6 +1824,15 @@ h4, h5, h6 { font-family: var(--font-sans);  font-weight: 600; line-height: 1.3;
     gap: 0.4rem;
   }
 
+
+
+  .navbar-inner {
+    width: 100%;
+    max-width: 100%;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
   .modal {
     width: calc(100vw - 1.5rem);
     padding: 1.5rem 1.25rem;
@@ -1881,16 +1912,15 @@ h4, h5, h6 { font-family: var(--font-sans);  font-weight: 600; line-height: 1.3;
   }
 
   .nav-logo-name {
-    font-size: 1.125rem;
+    font-size: 1.05rem;
   }
 
   .nav-logo-tagline {
-    font-size: 0.55rem;
-    letter-spacing: 0.1em;
+    display: none !important;
   }
 
   .nav-actions {
-    gap: 0.35rem;
+    gap: 0.25rem;
   }
 
   .nav-toggle-btn {
@@ -2065,7 +2095,7 @@ h4, h5, h6 { font-family: var(--font-sans);  font-weight: 600; line-height: 1.3;
   }
 
   .nav-logo-name {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
   }
 
   .nav-logo-tagline {

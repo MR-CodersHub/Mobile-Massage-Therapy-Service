@@ -59,6 +59,9 @@
     </div>
   </aside>
 
+  <!-- Mobile Overlay -->
+  <div class="mobile-nav-overlay" id="admin-sidebar-overlay" role="presentation"></div>
+
   <!-- MAIN -->
   <main class="dashboard-main">
 
@@ -68,7 +71,7 @@
         <button class="sidebar-mobile-toggle" id="admin-sidebar-toggle" aria-label="Toggle sidebar"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="20" height="20"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg></button>
         <div>
           <div class="dashboard-page-title">Admin Dashboard</div>
-          <div style="font-size:0.75rem;color:var(--text-muted);">Friday, Oct 2, 2026 · Platform Overview</div>
+          <div class="topbar-subtitle" style="font-size:0.75rem;color:var(--text-muted);">Friday, Oct 2, 2026 · Platform Overview</div>
         </div>
       </div>
       <div class="topbar-right">
@@ -186,9 +189,9 @@
       <div class="dashboard-section" style="margin-bottom:1.5rem;">
         <div class="dashboard-section-header">
           <span class="dashboard-section-title"><svg class="icon icon-stroke" viewBox="0 0 24 24" width="18" height="18"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg> Recent Bookings</span>
-          <div style="display:flex;gap:0.75rem;align-items:center;">
-            <input type="text" class="form-control" placeholder="Search..." style="width:180px;font-size:0.8rem;padding:0.45rem 0.875rem;">
-            <select class="form-control" style="width:140px;font-size:0.8rem;padding:0.45rem 0.875rem;">
+          <div class="admin-table-filters">
+            <input type="text" class="form-control admin-filter-search" placeholder="Search...">
+            <select class="form-control admin-filter-select">
               <option>All Statuses</option>
               <option>Confirmed</option>
               <option>Pending</option>
@@ -276,14 +279,14 @@
               </tbody>
             </table>
           </div>
-          <div style="padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);">
-            <span style="font-size:0.8rem;color:var(--text-muted);">Showing 6 of 847 bookings</span>
-            <div style="display:flex;gap:0.5rem;">
-              <button class="admin-action-btn aab-view" style="padding:0.45rem 1rem;">← Prev</button>
-              <button class="admin-action-btn" style="background:var(--teal-deep);color:var(--ivory);padding:0.45rem 1rem;">1</button>
-              <button class="admin-action-btn aab-view" style="padding:0.45rem 1rem;">2</button>
-              <button class="admin-action-btn aab-view" style="padding:0.45rem 1rem;">3</button>
-              <button class="admin-action-btn aab-view" style="padding:0.45rem 1rem;">Next →</button>
+          <div class="admin-pagination-row">
+            <span class="admin-pagination-text">Showing 6 of 847 bookings</span>
+            <div class="admin-pagination-btns">
+              <button class="admin-action-btn aab-view">← Prev</button>
+              <button class="admin-action-btn aab-active">1</button>
+              <button class="admin-action-btn aab-view">2</button>
+              <button class="admin-action-btn aab-view">3</button>
+              <button class="admin-action-btn aab-view">Next →</button>
             </div>
           </div>
         </div>
@@ -293,7 +296,7 @@
       <div class="dashboard-grid-2">
         <div class="dashboard-section">
           <div class="dashboard-section-header">
-            <span class="dashboard-section-title">⭐ Top Therapists (This Month)</span>
+            <span class="dashboard-section-title"><svg class="icon star-icon" viewBox="0 0 24 24" width="16" height="16" fill="var(--gold)" stroke="var(--gold)" style="display:inline-block;vertical-align:-2px;margin-right:6px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Top Therapists (This Month)</span>
             <a href="therapists.html" class="dashboard-section-action">Manage All →</a>
           </div>
           <div class="dashboard-section-body">
@@ -367,11 +370,34 @@
 
 <script src="js/main.js"></script>
 <script>
-  // Admin sidebar mobile toggle
+  // Admin sidebar mobile toggle and overlay
   const adminSidebarToggle = document.getElementById('admin-sidebar-toggle');
   const adminSidebar = document.getElementById('admin-sidebar');
+  const adminSidebarOverlay = document.getElementById('admin-sidebar-overlay');
+
+  function openAdminSidebar() {
+    adminSidebar?.classList.add('mobile-open');
+    adminSidebarOverlay?.classList.add('visible');
+  }
+  function closeAdminSidebar() {
+    adminSidebar?.classList.remove('mobile-open');
+    adminSidebarOverlay?.classList.remove('visible');
+  }
+
   adminSidebarToggle?.addEventListener('click', () => {
-    adminSidebar?.classList.toggle('mobile-open');
+    if (adminSidebar?.classList.contains('mobile-open')) {
+      closeAdminSidebar();
+    } else {
+      openAdminSidebar();
+    }
+  });
+
+  adminSidebarOverlay?.addEventListener('click', closeAdminSidebar);
+
+  document.querySelectorAll('.sidebar-link').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 1024) closeAdminSidebar();
+    });
   });
 
   // Admin action buttons

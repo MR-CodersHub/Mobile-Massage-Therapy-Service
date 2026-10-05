@@ -437,18 +437,43 @@
 
 .therapist-availability {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
-  display: flex;
+  top: 0.875rem;
+  left: 0.875rem;
+  bottom: auto;
+  right: auto;
+  display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(8px);
+  gap: 0.45rem;
+  background: rgba(18, 59, 58, 0.85);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.38rem 0.75rem;
   border-radius: var(--r-full);
-  padding: 0.35rem 0.875rem;
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: white;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  z-index: 2;
+  width: auto;
+  height: auto;
+  max-width: fit-content;
+  pointer-events: none;
+}
+
+.therapist-availability.availability-scheduled {
+  background: rgba(164, 126, 61, 0.9);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.therapist-availability svg {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  flex-shrink: 0;
+  color: inherit;
 }
 
 .availability-dot {
@@ -456,12 +481,23 @@
   height: 7px;
   border-radius: 50%;
   background: #4ade80;
-  animation: pulse-green 1.5s infinite;
+  box-shadow: 0 0 6px #4ade80;
+  flex-shrink: 0;
+  animation: pulse-green 1.8s infinite ease-in-out;
 }
 
 @keyframes pulse-green {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.85); }
+}
+
+[dir="rtl"] .therapist-availability {
+  left: auto;
+  right: 0.875rem;
+}
+[dir="rtl"] .therapist-favorite {
+  right: auto;
+  left: 0.875rem;
 }
 
 .therapist-favorite {
@@ -1313,7 +1349,7 @@
 }
 
 @media (max-width: 768px) {
-  .team-grid { grid-template-columns: 1fr; max-width: 360px; margin-inline: auto; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); max-width: 640px; margin-inline: auto; gap: 1.25rem; }
   .values-grid { grid-template-columns: 1fr; }
   .cred-grid { grid-template-columns: 1fr; }
   .about-testimonials-grid { grid-template-columns: 1fr; }
@@ -1384,9 +1420,7 @@
 .therapist-img-wrap { position: relative; aspect-ratio: 4/3; overflow: hidden; }
 .therapist-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
 .therapist-card:hover .therapist-img-wrap img { transform: scale(1.05); }
-.therapist-availability { position: absolute; bottom: 0.875rem; left: 0.875rem; background: rgba(18,59,58,0.75); color: white; font-size: 0.7rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: var(--r-full); display: flex; align-items: center; gap: 0.4rem; backdrop-filter: blur(4px); }
-.availability-dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; animation: pulse-green 1.5s infinite; }
-@keyframes pulse-green { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
 .therapist-favorite { position: absolute; top: 0.875rem; right: 0.875rem; width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.9); border: none; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all var(--tr-fast); box-shadow: var(--shadow-sm); }
 .therapist-favorite:hover { transform: scale(1.15); }
 .therapist-info { padding: 1.25rem; display: flex; flex-direction: column; flex: 1; }
@@ -1873,10 +1907,8 @@
 .h2-step-title { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 400; color: var(--white); margin-bottom: 0.75rem; }
 .h2-step-desc { font-size: 0.875rem; color: rgba(255,255,255,0.85); line-height: 1.75; margin: 0; }
 .h2-step-connector { position: absolute; top: 26px; left: calc(50% - 2rem); width: 4rem; height: 1px; background: linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent); transform: translateX(-50%); }
-.h2-final-cta { position: relative; padding: 8rem 0; overflow: hidden; }
-.h2-cta-bg { position: absolute; inset: 0; }
-.h2-cta-bg img { width: 100%; height: 100%; object-fit: cover; }
-.h2-cta-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(18,59,58,0.7) 0%, rgba(18,59,58,0.92) 100%); }
+.h2-final-cta { position: relative; padding: 8rem 0; overflow: hidden; background: linear-gradient(160deg, var(--teal-deep) 0%, var(--teal-mid) 100%); }
+.h2-cta-overlay { position: absolute; inset: 0; background: radial-gradient(600px 300px at 50% 0%, rgba(201,169,110,0.18), transparent 70%); pointer-events: none; }
 .h2-cta-content { position: relative; z-index: 1; }
 
 /* Responsive Table */
@@ -1932,6 +1964,8 @@
   .story-img-accent { right: -1rem; width: 150px; }
   .mvv-grid { grid-template-columns: 1fr; }
   .cred-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: repeat(2, 1fr); max-width: 800px; margin-inline: auto; gap: 2rem; }
+  .team-socials { opacity: 1 !important; transform: none !important; }
 }
 
 /* ---------- Breakpoint 768px & 760px: Tablet Portrait / Phablets ---------- */
@@ -1940,7 +1974,7 @@
   .therapist-grid { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; }
   .addon-grid { grid-template-columns: 1fr; }
   .blog-grid { grid-template-columns: 1fr; max-width: 500px; margin-inline: auto; }
-  .team-grid { grid-template-columns: 1fr; max-width: 380px; margin-inline: auto; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); max-width: 640px; margin-inline: auto; gap: 1.25rem; }
   .values-grid { grid-template-columns: 1fr; }
   .cred-grid { grid-template-columns: 1fr; }
   .about-testimonials-grid { grid-template-columns: 1fr; }
@@ -2023,6 +2057,30 @@
     padding: 0.875rem 0.75rem !important;
     font-size: 0.82rem !important;
   }
+  .team-grid {
+    grid-template-columns: 1fr;
+    max-width: 380px;
+    margin-inline: auto;
+    gap: 1.5rem;
+  }
+  .team-img-wrap {
+    aspect-ratio: 3/4;
+    height: auto;
+    width: 100%;
+  }
+  .team-info {
+    padding: 1.25rem 1rem;
+  }
+  .team-name {
+    font-size: 1.15rem;
+  }
+  .team-role {
+    font-size: 0.72rem;
+  }
+  .team-bio {
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
 }
 
 /* ---------- Breakpoint 360px: Compact Mobile ---------- */
@@ -2079,12 +2137,12 @@
     height: 44px;
     font-size: 1.25rem;
   }
-  .team-img-wrap {
-    height: 230px;
-  }
-  .team-body {
-    padding: 1.15rem 1rem;
-  }
+  .team-grid { grid-template-columns: 1fr; max-width: 100%; margin-inline: auto; gap: 1.25rem; }
+  .team-img-wrap { aspect-ratio: 3/4; height: auto; }
+  .team-info { padding: 1rem 0.85rem; }
+  .team-name { font-size: 1.15rem; margin-bottom: 0.2rem; }
+  .team-role { font-size: 0.72rem; margin-bottom: 0.5rem; }
+  .team-bio { font-size: 0.8rem; line-height: 1.6; }
   .cred-card {
     padding: 1.25rem 1rem;
   }
@@ -2257,6 +2315,11 @@
   .mvv-text {
     font-size: 0.78rem;
   }
+  .team-grid { max-width: 100%; gap: 1rem; }
+  .team-info { padding: 1rem 0.85rem; }
+  .team-name { font-size: 1.08rem; }
+  .team-role { font-size: 0.7rem; }
+  .team-bio { font-size: 0.78rem; }
   .cred-card {
     padding: 1rem 0.75rem;
   }
@@ -2267,16 +2330,9 @@
     font-size: 0.72rem;
   }
   .team-img-wrap {
-    height: 200px;
-  }
-  .team-body {
-    padding: 1rem 0.75rem;
-  }
-  .team-name {
-    font-size: 1.05rem;
-  }
-  .team-role {
-    font-size: 0.72rem;
+    aspect-ratio: 3/4;
+    height: auto;
+    width: 100%;
   }
 
   /* Services */
@@ -2421,6 +2477,11 @@
     padding: 0 0.65rem 0.85rem;
     font-size: 0.78rem;
   }
+  .team-grid { max-width: 100%; gap: 0.875rem; }
+  .team-info { padding: 0.875rem 0.75rem; }
+  .team-name { font-size: 1rem; }
+  .team-role { font-size: 0.68rem; }
+  .team-bio { font-size: 0.75rem; line-height: 1.5; }
   .responsive-data-table {
     min-width: 400px;
   }
